@@ -46,7 +46,8 @@ $(document).ready(function () {
     let row = $("<div>").addClass("row");
     let hour = $("<div>").addClass("hour col-2");
     $(hour).text(timeArray[i]);
-    let past = $("<input>").addClass("past col-8");
+    let past = $("<input>").addClass("past col-8").attr("id", i+9)
+
     let saveBtn = $("<button>").addClass("saveBtn col-2");
     $(saveBtn).text("Save");
     $(row).append(hour);
@@ -70,14 +71,28 @@ $(document).ready(function () {
       console.log("*****", event.target);
       var timeText = $(event.target).siblings("input").val();
       var id = $(event.target).closest(".time-block").attr("data");
-      localStorage.setItem(`hour`, timeText);
+      localStorage.setItem(id, timeText);
       
       console.log('hour')
     }
 
    
   }
-});
+
+function checkLocal(){
+  
+  $("#9.col-8").val(localStorage.getItem("9"))
+  $("#10.col-8").val(localStorage.getItem("10"))
+  $("#11.col-8").val(localStorage.getItem("11"))
+  $("#12.col-8").val(localStorage.getItem("12"))
+  $("#13.col-8").val(localStorage.getItem("13"))
+  $("#14.col-8").val(localStorage.getItem("14"))
+  $("#15.col-8").val(localStorage.getItem("15"))
+  $("#16.col-8").val(localStorage.getItem("16"))
+  $("#17.col-8").val(localStorage.getItem("17"))
+  
+}
+checkLocal();
 // change colors
 function color() {
   let hour = new Date();
@@ -86,3 +101,4 @@ function color() {
     var thisHour = parseInt($(this).attr("id"));
   });
 }
+});
